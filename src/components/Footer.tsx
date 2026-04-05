@@ -119,7 +119,6 @@ const Footer = memo(function Footer() {
           </ul>
         </nav>
       </div>
-      <p className="footer-copy">© 2025 Paul Nguyen — Built with precision.</p>
     </footer>
   )
 })

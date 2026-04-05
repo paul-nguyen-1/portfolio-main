@@ -34,8 +34,8 @@ const Hero = memo(function Hero() {
         </div>
 
         <aside className="hero-stats" aria-label="Key stats">
+          <StatBadge value="10+" label="Projects" />
           <StatBadge value="4.0" label="GPA · UIUC" />
-          <StatBadge value="75×" label="Query speedup · NASA" />
           <StatBadge value="3+" label="Internships" />
         </aside>
       </div>

@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useRef, useEffect, useCallback } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 interface Job {
@@ -51,6 +51,40 @@ const jobs: Job[] = [
 
 const Experience = memo(function Experience() {
   const headRef = useScrollReveal<HTMLDivElement>()
+  const entryRefs = useRef<(HTMLDivElement | null)[]>([])
+  const progressRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = window.innerHeight * 0.8
+      let activeEl: HTMLDivElement | null = null
+
+      entryRefs.current.forEach((el) => {
+        if (!el) return
+        if (el.getBoundingClientRect().top <= threshold) activeEl = el
+      })
+
+      if (!progressRef.current) return
+
+      if (!activeEl) {
+        progressRef.current.style.height = '0px'
+        return
+      }
+
+      const entries = entryRefs.current.filter(Boolean) as HTMLDivElement[]
+      const lastEntry = entries[entries.length - 1]
+      const pastAll = lastEntry && lastEntry.getBoundingClientRect().bottom <= threshold
+
+      const h = pastAll
+        ? progressRef.current.parentElement!.offsetHeight
+        : (activeEl as HTMLDivElement).offsetTop + 12
+      progressRef.current.style.height = `${h}px`
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <section id="experience" className="section">
@@ -61,19 +95,42 @@ const Experience = memo(function Experience() {
         </h2>
       </div>
       <div className="timeline">
-        {jobs.map((job) => (
-          <ExpEntry key={job.company} job={job} />
+        <div ref={progressRef} className="timeline-progress" />
+        {jobs.map((job, i) => (
+          <ExpEntry
+            key={job.company}
+            job={job}
+            trackRef={(el) => {
+              entryRefs.current[i] = el
+            }}
+          />
         ))}
       </div>
     </section>
   )
 })
 
-const ExpEntry = memo(function ExpEntry({ job }: { job: Job }) {
-  const ref = useScrollReveal<HTMLDivElement>()
+const ExpEntry = memo(function ExpEntry({
+  job,
+  trackRef,
+}: {
+  job: Job
+  trackRef: (el: HTMLDivElement | null) => void
+}) {
+  const revealRef = useScrollReveal<HTMLDivElement>()
+
+  const mergedRef = useCallback(
+    (el: HTMLDivElement | null) => {
+      ;(revealRef as { current: HTMLDivElement | null }).current = el
+      trackRef(el)
+    },
+    // trackRef identity is stable — inline arrow defined once per job slot
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  )
 
   return (
-    <div ref={ref} className="exp-entry reveal">
+    <div ref={mergedRef} className="exp-entry reveal">
       <div className="exp-card">
         <div className="exp-head">
           <div>

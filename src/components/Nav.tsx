@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import AvatarViewer from './AvatarViewer'
 
 const links = [
   { label: 'Education', href: '#education' },
@@ -11,7 +12,7 @@ const Nav = memo(function Nav() {
   return (
     <nav className="nav">
       <a href="#hero" className="nav-logo">
-        P<em>.</em>NGUYEN
+        <AvatarViewer width={52} height={52} walk />
       </a>
       <ul className="nav-links" role="list">
         {links.map((l) => (

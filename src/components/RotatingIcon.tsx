@@ -51,7 +51,7 @@ export default function RotatingIcon({ imageSrc, size = 320 }: RotatingIconProps
     fill.position.set(-4, 2, 3)
     scene.add(fill)
 
-    const halfH = 5 * Math.tan((45 / 2) * (Math.PI / 180)) // ~2.07
+    const halfH = 5 * Math.tan((45 / 2) * (Math.PI / 180))
     const BOUND_X = halfH - RADIUS
     const BOUND_Y_TOP = halfH - RADIUS
     const BOUND_Y_BOT = -halfH + RADIUS

@@ -9,35 +9,35 @@ const Hero = memo(function Hero() {
       <div className="hero-bg" aria-hidden />
       <div className="hero-grid" aria-hidden />
       <canvas ref={canvasRef} className="hero-canvas" aria-hidden />
-
-      <div className="hero-content">
-        <p className="hero-tag">MS Computer Science &nbsp;·&nbsp; UIUC</p>
-        <h1>
-          PAUL
-          <br />
-          <em>NGUYEN</em>
-        </h1>
-        <p className="hero-title">Software Engineer</p>
-        <p className="hero-desc">
-          Building fast, scalable systems from the ground up.
-          NASA JSC → Lucid Motors → Summersalt → IBM.
-          Targeting FAANG full-time after December 2026.
-        </p>
-        <div className="hero-cta">
-          <a href="#projects" className="btn-primary">View Projects</a>
-          <a href="#experience" className="btn-secondary">Experience</a>
+      <div>
+        <div className="hero-content">
+          <p className="hero-tag">
+            Masters, Computer Science &nbsp;·&nbsp; UIUC
+          </p>
+          <h1>
+            PAUL
+            <br />
+            <em>NGUYEN</em>
+          </h1>
+          <p className="hero-title">Software Engineer</p>
+          <p className="hero-desc">
+            Building fast, scalable systems from the ground up.
+          </p>
+          <div className="hero-cta">
+            <a href="#projects" className="btn-primary">
+              View Projects
+            </a>
+            <a href="#experience" className="btn-secondary">
+              Experience
+            </a>
+          </div>
         </div>
-      </div>
 
-      <aside className="hero-stats" aria-label="Key stats">
-        <StatBadge value="4.0" label="GPA · UIUC" />
-        <StatBadge value="75×" label="Query speedup · NASA" />
-        <StatBadge value="3+" label="Internships" />
-      </aside>
-
-      <div className="scroll-hint" aria-hidden>
-        <div className="scroll-line" />
-        Scroll to explore
+        <aside className="hero-stats" aria-label="Key stats">
+          <StatBadge value="4.0" label="GPA · UIUC" />
+          <StatBadge value="75×" label="Query speedup · NASA" />
+          <StatBadge value="3+" label="Internships" />
+        </aside>
       </div>
     </section>
   )

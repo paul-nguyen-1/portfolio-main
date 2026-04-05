@@ -19,7 +19,14 @@ const projects: Project[] = [
     nameAccent: 'Hub',
     tagline: 'CSV-to-Dashboard SaaS with AI Insights',
     desc: 'Upload any CSV and get interactive dashboards with anomaly detection and GPT-4o generated analysis reports. Full-stack SaaS with auth, subscriptions, and a polished React UI built on TanStack Start.',
-    stack: ['TanStack Start', 'FastAPI', 'GPT-4o', 'PostgreSQL', 'Recharts', 'Tailwind v4'],
+    stack: [
+      'TanStack Start',
+      'FastAPI',
+      'GPT-4o',
+      'PostgreSQL',
+      'Recharts',
+      'Tailwind v4',
+    ],
     github: 'https://github.com/paul-nguyen-1',
   },
   {
@@ -37,7 +44,14 @@ const projects: Project[] = [
     nameAccent: 'Hub',
     tagline: 'Full-Stack Course Review Platform',
     desc: 'Course review platform adopted by 200+ Oregon State CS students, aggregating 2,200+ peer reviews with real-time difficulty ratings to inform course selection and degree planning.',
-    stack: ['React', 'Redux', 'NestJS', 'MongoDB', 'Framer Motion', 'TypeScript'],
+    stack: [
+      'React',
+      'Redux',
+      'NestJS',
+      'MongoDB',
+      'Framer Motion',
+      'TypeScript',
+    ],
     github: 'https://github.com/paul-nguyen-1',
   },
   {
@@ -52,7 +66,15 @@ const projects: Project[] = [
 ]
 
 const GitHubIcon = () => (
-  <svg width={13} height={13} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+  <svg
+    width={13}
+    height={13}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    aria-hidden
+  >
     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
   </svg>
 )
@@ -63,7 +85,7 @@ const Projects = memo(function Projects() {
   return (
     <section id="projects" className="section section--alt">
       <div ref={headRef} className="section-head reveal">
-        <p className="section-tag">03 — Deployed Missions</p>
+        <p className="section-tag">03 — Deployed</p>
         <h2>
           Pro<em>jects</em>
         </h2>
@@ -77,7 +99,11 @@ const Projects = memo(function Projects() {
   )
 })
 
-const ProjectCard = memo(function ProjectCard({ project: p }: { project: Project }) {
+const ProjectCard = memo(function ProjectCard({
+  project: p,
+}: {
+  project: Project
+}) {
   const ref = useScrollReveal<HTMLDivElement>()
 
   return (
@@ -98,7 +124,12 @@ const ProjectCard = memo(function ProjectCard({ project: p }: { project: Project
       </div>
       <div className="proj-links">
         {p.github && (
-          <a href={p.github} target="_blank" rel="noreferrer" className="proj-link">
+          <a
+            href={p.github}
+            target="_blank"
+            rel="noreferrer"
+            className="proj-link"
+          >
             <GitHubIcon />
             GitHub
           </a>

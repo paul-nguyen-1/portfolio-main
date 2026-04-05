@@ -55,7 +55,7 @@ const Experience = memo(function Experience() {
   return (
     <section id="experience" className="section">
       <div ref={headRef} className="section-head reveal">
-        <p className="section-tag">02 — Combat Record</p>
+        <p className="section-tag">02 — Work</p>
         <h2>
           Experi<em>ence</em>
         </h2>

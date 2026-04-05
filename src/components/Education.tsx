@@ -41,7 +41,7 @@ const Education = memo(function Education() {
   return (
     <section id="education" className="section section--alt">
       <div ref={headRef} className="section-head reveal">
-        <p className="section-tag">01 — Academic Record</p>
+        <p className="section-tag">01 — Academic</p>
         <h2>
           Edu<em>cation</em>
         </h2>

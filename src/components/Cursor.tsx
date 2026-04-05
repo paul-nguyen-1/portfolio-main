@@ -1,6 +1,5 @@
 import { useEffect, useRef, memo } from 'react'
 
-// Cursor uses direct DOM writes — never triggers React re-renders
 const Cursor = memo(function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
